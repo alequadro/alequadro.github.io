@@ -1,0 +1,356 @@
+---
+import Base from '../layouts/Base.astro';
+
+const experience = [
+  {
+    role: 'Senior DevOps Engineer — Cloud Platform',
+    company: 'Cardo AI',
+    period: 'February 2026 — Present',
+    points: [
+      'Design, operate, and scale multi-region AWS infrastructure (12+ accounts) and EKS clusters (10+) for a cloud-native fintech platform serving institutional clients across Europe and the US.',
+      'Built core platform automation: a custom Terraform provider, GitOps workflows, and CI/CD pipelines with GitHub Actions and AWS CodeBuild, cutting deployment and promotion time by 30%.',
+      'Strengthened platform security through policy-as-code enforcement and security automation aligned with enterprise requirements.',
+      'Operationalized SOC2 compliance, embedding auditability and security controls into daily engineering workflows.',
+      'Implemented FinOps strategies with event-driven autoscaling, reducing cloud costs by 60% while improving resource efficiency.',
+      'Automated workflows using n8n and AI skills.',
+    ],
+  },
+  {
+    role: 'DevOps Engineer — Team Lead',
+    company: 'Florence Consulting Group',
+    period: 'December 2019 — January 2026',
+    points: [
+      'Led and mentored a team of 5 DevOps engineers delivering cloud-native transformation projects (from 2024 onwards).',
+      'Partnered with C-level stakeholders on portfolio strategy, go-to-market positioning, and strategic partnerships.',
+      'Designed, migrated, and operated secure cloud, hybrid, and on-prem infrastructure using IaC and security best practices.',
+      'Deployed and managed Kubernetes platforms with GitOps workflows, ensuring scalability, compliance, and reliability.',
+      'Built and optimized CI/CD pipelines across multiple tools, reducing deployment times by 75%.',
+      'Modernized legacy systems into cloud-native microservices, cutting costs by 50%+.',
+      'Implemented full-stack observability with Grafana and Elastic Stack, enabling proactive incident response and SLA adherence.',
+      'Automated 99%+ of recurring operational tasks with Python and Bash tooling.',
+    ],
+  },
+  {
+    role: 'Junior Programmer (School/Work Alternation)',
+    company: 'OSItalia',
+    period: 'June 2018 — September 2018',
+    points: [
+      'Introduction to programming patterns and OOP with Delphi.',
+      'Developed a database management application.',
+    ],
+  },
+];
+
+const skills = [
+  { group: 'Cloud', items: ['AWS', 'Azure', 'GCP'] },
+  { group: 'Containers & Orchestration', items: ['Kubernetes (EKS)', 'KEDA', 'Karpenter'] },
+  { group: 'Infrastructure as Code', items: ['Terraform'] },
+  { group: 'CI/CD', items: ['GitHub Actions', 'GitLab CI/CD', 'Jenkins'] },
+  { group: 'GitOps & Platform Engineering', items: ['ArgoCD', 'Helm', 'Kustomize'] },
+  { group: 'DevOps Practices', items: ['DevSecOps', 'Automation', 'FinOps'] },
+  { group: 'Security', items: ['Container Security', 'Cloud Security', 'Trivy'] },
+  { group: 'Observability', items: ['Grafana (LGTM)', 'Elastic Stack'] },
+  { group: 'Programming & Scripting', items: ['Python', 'Bash'] },
+];
+
+const certifications = [
+  { name: 'AWS Certified Solutions Architect — Associate', active: true },
+  { name: 'GitLab Solutions Architect Core Verified Associate', active: true },
+  { name: 'CKS: Certified Kubernetes Security Specialist', active: false },
+  { name: 'CKA: Certified Kubernetes Administrator', active: false },
+  { name: 'CKAD: Certified Kubernetes Application Developer', active: false },
+  { name: 'KCNA: Kubernetes and Cloud Native Associate', active: false },
+  { name: 'KCSA: Kubernetes and Cloud Native Security Associate', active: false },
+];
+---
+
+<Base
+  title="Alessandro Quadrini — Senior DevOps Engineer"
+  description="Portfolio of Alessandro Quadrini, Senior DevOps and Platform Engineer with 7+ years of experience building secure, scalable cloud-native platforms."
+>
+  <section class="hero container">
+    <img src="/me.jpg" alt="Portrait of Alessandro Quadrini" class="avatar" width="400" height="400" />
+    <div>
+      <p class="hero-hello">Hi, I'm</p>
+      <h1>Alessandro Quadrini</h1>
+      <p class="hero-role">Senior DevOps &amp; Platform Engineer</p>
+      <p class="hero-tagline">
+        I design and run cloud-native platforms that are secure, scalable, and cost-effective —
+        and I have a lot of fun doing it.
+      </p>
+      <div class="hero-links">
+        <a class="btn" href="mailto:quadrini.alessandro@proton.me">Email me</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/alessandro-quadrini" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn btn-outline" href="https://github.com/alequadro" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="container">
+    <h2>About</h2>
+    <p>
+      I'm a Senior DevOps and Platform Engineer with 7+ years of experience designing and
+      operating cloud-native platforms across many sectors. I've led DevOps teams, driven cloud
+      transformation programs, and delivered secure, scalable infrastructure for enterprise and
+      regulated environments.
+    </p>
+    <p>
+      I'm always looking for stimulating challenges that keep expanding my knowledge — if you
+      have one, I'd love to hear about it.
+    </p>
+  </section>
+
+  <section id="experience" class="container">
+    <h2>Experience</h2>
+    <div class="timeline">
+      {
+        experience.map((job) => (
+          <article class="card job">
+            <header>
+              <h3>{job.role}</h3>
+              <p class="job-meta">
+                <span class="job-company">{job.company}</span> &middot; {job.period}
+              </p>
+            </header>
+            <ul>
+              {job.points.map((point) => <li>{point}</li>)}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="skills" class="container">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      {
+        skills.map((skill) => (
+          <div class="card skill-group">
+            <h3>{skill.group}</h3>
+            <ul class="tags">
+              {skill.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="certifications" class="container">
+    <h2>Certifications</h2>
+    <ul class="cert-list">
+      {
+        certifications.map((cert) => (
+          <li class="card cert">
+            <span>{cert.name}</span>
+            {!cert.active && <span class="badge">expired</span>}
+          </li>
+        ))
+      }
+    </ul>
+    <p class="cert-note">
+      Former Kubestronaut — the Kubernetes certifications above lapsed only because renewal fees
+      added up. The knowledge stayed.
+    </p>
+  </section>
+
+  <section id="education" class="container">
+    <h2>Education &amp; Languages</h2>
+    <div class="card">
+      <h3>I.T.I.S. Tullio Buzzi</h3>
+      <p>High School Degree in Computer Science and Telecommunications</p>
+    </div>
+    <div class="card">
+      <h3>Languages</h3>
+      <p>Italian (native) &middot; English (fluent, C1)</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding-top: 4rem;
+  }
+
+  .avatar {
+    width: clamp(10rem, 25vw, 14rem);
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    flex-shrink: 0;
+  }
+
+  .hero-hello {
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+
+  .hero-role {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin: 0 0 0.75rem;
+  }
+
+  .hero-tagline {
+    max-width: 34rem;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1.25rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.6rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 600;
+    background: var(--accent);
+    color: var(--bg);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .btn:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px var(--accent-soft);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+
+  .card {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .timeline {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .job h3 {
+    font-size: 1.1rem;
+  }
+
+  .job-meta {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .job-company {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .job ul {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .job li {
+    margin-bottom: 0.4rem;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-group h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tags li {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 999px;
+    padding: 0.2rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .cert-list {
+    display: grid;
+    gap: 0.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cert {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .badge {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.15rem 0.6rem;
+  }
+
+  .cert-note {
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  #education .card {
+    margin-bottom: 1rem;
+  }
+
+  #education p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 40rem) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      padding-top: 2.5rem;
+    }
+
+    .hero-links {
+      justify-content: center;
+    }
+
+    .hero-tagline {
+      margin-inline: auto;
+    }
+  }
+</style>
