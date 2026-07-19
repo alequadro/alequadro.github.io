@@ -8,12 +8,13 @@ const experience = [
     period: 'February 2026 — Present',
     points: [
       'Design, operate, and scale multi-region AWS infrastructure (12+ accounts) and EKS clusters (10+) for a cloud-native fintech platform serving institutional clients across Europe and the US.',
-      'Built core platform automation: a custom Terraform provider, GitOps workflows, and CI/CD pipelines with GitHub Actions and AWS CodeBuild, cutting deployment and promotion time by 30%.',
+      'Built core platform automation: a custom Terraform provider, GitOps workflows, and CI/CD pipelines with GitHub Actions and AWS CodeBuild, cutting deployment and promotion time by 150%.',
       'Strengthened platform security through policy-as-code enforcement and security automation aligned with enterprise requirements.',
       'Operationalized SOC2 compliance, embedding auditability and security controls into daily engineering workflows.',
       'Implemented FinOps strategies with event-driven autoscaling, reducing cloud costs by 60% while improving resource efficiency.',
-      'Automated workflows using n8n and AI skills.',
+      'Automated workflows using n8n and AI to reduce the cognitive load of repetitive tasks.',
     ],
+    summary: 'Joining Cardo was an incredible experience. Stepping into the world of fintech was both exciting and challenging, and it provided immense opportunities for personal and professional growth.',
   },
   {
     role: 'DevOps Engineer — Team Lead',
@@ -29,6 +30,7 @@ const experience = [
       'Implemented full-stack observability with Grafana and Elastic Stack, enabling proactive incident response and SLA adherence.',
       'Automated 99%+ of recurring operational tasks with Python and Bash tooling.',
     ],
+    summary: 'My first ever real job experience. I will be forever grateful to the CEOs (Iacopo and Niccolò) for the opportunity that I had in FCG. Starting as a Junior and climbing all the way to the DevOps Team Lead has been really life changing.', 
   },
   {
     role: 'Junior Programmer (School/Work Alternation)',
@@ -38,6 +40,7 @@ const experience = [
       'Introduction to programming patterns and OOP with Delphi.',
       'Developed a database management application.',
     ],
+    summary: 'It was a great experience that gave me a real understanding of what it means to work in a company.',
   },
 ];
 
@@ -45,10 +48,10 @@ const skills = [
   { group: 'Cloud', items: ['AWS', 'Azure', 'GCP'] },
   { group: 'Containers & Orchestration', items: ['Kubernetes (EKS)', 'KEDA', 'Karpenter'] },
   { group: 'Infrastructure as Code', items: ['Terraform'] },
-  { group: 'CI/CD', items: ['GitHub Actions', 'GitLab CI/CD', 'Jenkins'] },
+  { group: 'CI/CD', items: ['GitHub Actions', 'GitLab CI/CD', 'Jenkins', 'Azure DevOps'] },
   { group: 'GitOps & Platform Engineering', items: ['ArgoCD', 'Helm', 'Kustomize'] },
   { group: 'DevOps Practices', items: ['DevSecOps', 'Automation', 'FinOps'] },
-  { group: 'Security', items: ['Container Security', 'Cloud Security', 'Trivy'] },
+  { group: 'Security', items: ['Container Security', 'Cloud Security', 'Kubernetes Security', 'Prowler', 'Trivy'] },
   { group: 'Observability', items: ['Grafana (LGTM)', 'Elastic Stack'] },
   { group: 'Programming & Scripting', items: ['Python', 'Bash'] },
 ];
@@ -71,11 +74,11 @@ const certifications = [
   <section class="hero container">
     <img src="/me.jpg" alt="Portrait of Alessandro Quadrini" class="avatar" width="400" height="400" />
     <div>
-      <p class="hero-hello">Hi, I'm</p>
+      <p class="hero-hello">Hello! I'm</p>
       <h1>Alessandro Quadrini</h1>
       <p class="hero-role">Senior DevOps &amp; Platform Engineer</p>
       <p class="hero-tagline">
-        I design and run cloud-native platforms that are secure, scalable, and cost-effective —
+        I design and run cloud-native platforms that are secure, scalable, and cost-effective;
         and I have a lot of fun doing it.
       </p>
       <div class="hero-links">
@@ -95,8 +98,8 @@ const certifications = [
       regulated environments.
     </p>
     <p>
-      I'm always looking for stimulating challenges that keep expanding my knowledge — if you
-      have one, I'd love to hear about it.
+      I'm always looking for stimulating challenges that keep expanding my knowledge. If you
+      have one, I'd love to hear about it!
     </p>
   </section>
 
@@ -115,14 +118,22 @@ const certifications = [
             <ul>
               {job.points.map((point) => <li>{point}</li>)}
             </ul>
+            {job.summary && <p class="job-summary">{job.summary}</p>}
           </article>
         ))
       }
     </div>
   </section>
 
+  <section id="life" class="container">
+    <h2>Beyond Work</h2>
+      <p>I developed a passion for computers at around the age of six, when my father brought home a custom-built PC. I still vividly remember the transition from floppy disks to CDs. At the time, I barely understood their purpose, but I was fascinated by every new piece of technology.</p>
+      <p>Gaming has always been a big part of my life and remains one of my greatest passions. Looking back, it's what sparked my interest in computers, hardware, and software, eventually leading me toward a career in IT.</p> 
+      <p>Outside of work (which I believe is important to balance with personal interests!) I enjoy working out and listening to music. And yes, I'm a huge Michael Jackson fan!</p>
+  </section>
+
   <section id="skills" class="container">
-    <h2>Skills</h2>
+    <h2>Technical Skills</h2>
     <div class="skills-grid">
       {
         skills.map((skill) => (
@@ -150,8 +161,8 @@ const certifications = [
       }
     </ul>
     <p class="cert-note">
-      Former Kubestronaut — the Kubernetes certifications above lapsed only because renewal fees
-      added up. The knowledge stayed.
+      Former Kubestronaut; the Kubernetes certifications above lapsed only because renewal fees
+      added up. The knowledge stayed!
     </p>
   </section>
 
@@ -267,6 +278,14 @@ const certifications = [
 
   .job li {
     margin-bottom: 0.4rem;
+  }
+
+  .job-summary {
+    margin: 0.75rem 0 0;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-style: italic;
   }
 
   .skills-grid {
