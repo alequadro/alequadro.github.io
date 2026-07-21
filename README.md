@@ -1,13 +1,13 @@
 # alequadro.github.io
 
-Personal portfolio site of Alessandro Quadrini — Senior DevOps & Platform Engineer.
+Personal portfolio site of Alessandro Quadrini - Senior DevOps & Platform Engineer.
 
 Live at <https://alequadro.github.io>.
 
 ## Stack
 
 - **[Astro](https://astro.build)** (static output, zero JS shipped except one theme script)
-- Plain HTML/CSS — no UI frameworks, no build-time dependencies beyond Astro
+- Plain HTML/CSS - no UI frameworks, no build-time dependencies beyond Astro
 - **GitHub Actions** → GitHub Pages
 
 ## Structure
@@ -25,7 +25,7 @@ public/
 
 ## How it was built
 
-Deliberately minimal — a portfolio page doesn't need a SPA.
+Deliberately minimal - a portfolio page doesn't need a SPA.
 
 - **Content as data**: experience, skills, and certifications are plain JS arrays in
   `index.astro`'s frontmatter, rendered with `.map()`. Editing the resume means editing
@@ -40,7 +40,7 @@ Deliberately minimal — a portfolio page doesn't need a SPA.
 - **Accessibility**: skip link, semantic landmarks, `aria-pressed` on the theme toggle,
   responsive down to mobile via a single breakpoint.
 - **User-site config**: since this is a `<user>.github.io` repo, the site is served from
-  root — `astro.config.mjs` only sets `site`, no `base` path.
+  root - `astro.config.mjs` only sets `site`, no `base` path.
 
 ## Development
 
@@ -55,5 +55,5 @@ npm run preview # serve the production build locally
 
 Push to `main`. The workflow in `.github/workflows/deploy.yml` runs
 `npm ci && npm run build`, then publishes `dist/` via `actions/deploy-pages`
-using OIDC (`id-token: write`) — no stored secrets. Requires Pages to be set to
+using OIDC (`id-token: write`) - no stored secrets. Requires Pages to be set to
 "GitHub Actions" as the source in repo settings.

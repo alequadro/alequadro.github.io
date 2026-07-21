@@ -5,3 +5,5 @@ opencode.json
 node_modules/*
 
 .astro
+
+dist/*
