@@ -6,41 +6,27 @@ const experience = [
     role: 'Senior DevOps Engineer · Cloud Platform',
     company: 'Cardo AI',
     period: 'February 2026 - Present',
-    points: [
-      'Design, operate, and scale multi-region AWS infrastructure (12+ accounts) and EKS clusters (10+) for a cloud-native fintech platform serving institutional clients across Europe and the US.',
-      'Built core platform automation: a custom Terraform provider, GitOps workflows, and CI/CD pipelines with GitHub Actions and AWS CodeBuild, cutting deployment and promotion time by 75%.',
-      'Strengthened platform security through policy-as-code enforcement and security automation aligned with enterprise requirements.',
-      'Operationalized SOC2 compliance, embedding auditability and security controls into daily engineering workflows.',
-      'Implemented FinOps strategies with event-driven autoscaling, reducing cloud costs by 60% while improving resource efficiency.',
-      'Automated workflows using n8n and AI to reduce the cognitive load of repetitive tasks.',
+    paragraphs: [
+      'Joining Cardo AI marked an exciting new chapter for me. Moving into fintech meant learning how to build and operate platforms where reliability, security, and trust are part of every decision. I work across a multi-region AWS environment and its Kubernetes platforms, helping provide the foundation for a cloud-native product used by institutional clients in Europe and the US.',
+      'A large part of my work is about making the platform easier to use and safer to change. I have built automation around Terraform, GitOps, GitHub Actions, and AWS CodeBuild, while also improving how security and compliance are embedded in everyday engineering rather than treated as separate activities. I have worked on policy as code, SOC2 readiness, and FinOps initiatives, and I continue to explore practical uses of n8n and AI to remove repetitive work and leave more room for thoughtful engineering.',
     ],
-    summary: 'Joining Cardo was an incredible experience. Stepping into the world of fintech was both exciting and challenging, and it provided immense opportunities for personal and professional growth.',
   },
   {
     role: 'DevOps Engineer · Team Lead',
     company: 'Florence Consulting Group',
     period: 'December 2019 - January 2026',
-    points: [
-      'Led and mentored a team of 5 DevOps engineers delivering cloud-native transformation projects (from 2024 onwards).',
-      'Partnered with C-level stakeholders on portfolio strategy, go-to-market positioning, and strategic partnerships.',
-      'Designed, migrated, and operated secure cloud, hybrid, and on-prem infrastructure using IaC and security best practices.',
-      'Deployed and managed Kubernetes platforms with GitOps workflows, ensuring scalability, compliance, and reliability.',
-      'Built and optimized CI/CD pipelines across multiple tools, reducing deployment times by 75%.',
-      'Modernized legacy systems into cloud-native microservices, cutting costs by 50%+.',
-      'Implemented full-stack observability with Grafana and Elastic Stack, enabling proactive incident response and SLA adherence.',
-      'Automated 99%+ of recurring operational tasks with Python and Bash tooling.',
+    paragraphs: [
+      'Florence Consulting Group was my first real job, and I will always be grateful to its CEOs, Iacopo and Niccolò, for giving me the opportunity to grow there. I joined as a Junior and gradually found my way into DevOps, taking on increasingly complex technical and organizational responsibilities until I became Team Lead. That journey shaped how I approach engineering: stay curious, take ownership, and make difficult systems understandable for the people who operate them.',
+      'Consulting gave me the chance to work across cloud, hybrid, and on-premises environments, helping teams move from legacy systems toward more maintainable cloud-native platforms. I designed infrastructure with code, introduced Kubernetes and GitOps practices, improved delivery pipelines, and built observability around the systems we supported. As my role grew, I also mentored engineers and worked with senior stakeholders on strategy, partnerships, and how technical work could create lasting value for the business. Much of the day-to-day improvement came from small tools and automations in Python and Bash that removed friction from recurring operational work.',
     ],
-    summary: 'My first ever real job experience. I will be forever grateful to the CEOs (Iacopo and Niccolò) for the opportunity that I had in FCG. Starting as a Junior and climbing all the way to the DevOps Team Lead has been really life changing.', 
   },
   {
     role: 'Junior Programmer (School/Work Alternation)',
     company: 'OSItalia',
     period: 'June 2018 - September 2018',
-    points: [
-      'Introduction to programming patterns and OOP with Delphi.',
-      'Developed a database management application.',
+    paragraphs: [
+      'My time at OSItalia was my first opportunity to see what software development looked like in a professional environment. I learned the fundamentals of programming patterns and object-oriented design with Delphi, then applied them while building a database management application. More than any specific technology, the experience taught me how much care, communication, and patience go into turning an idea into something people can actually use.',
     ],
-    summary: 'It was a great experience that gave me a real understanding of what it means to work in a company.',
   },
 ];
 
@@ -116,10 +102,9 @@ const certifications = [
                 <span class="job-company">{job.company}</span> &middot; {job.period}
               </p>
             </header>
-            <ul>
-              {job.points.map((point) => <li>{point}</li>)}
-            </ul>
-            {job.summary && <p class="job-summary">{job.summary}</p>}
+            <div class="job-narrative">
+              {job.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            </div>
           </article>
         ))
       }
@@ -274,21 +259,12 @@ const certifications = [
     font-weight: 600;
   }
 
-  .job ul {
-    margin: 0;
-    padding-left: 1.25rem;
+  .job-narrative p {
+    margin: 0 0 0.85rem;
   }
 
-  .job li {
-    margin-bottom: 0.4rem;
-  }
-
-  .job-summary {
-    margin: 0.75rem 0 0;
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--border);
-    color: var(--text-muted);
-    font-style: italic;
+  .job-narrative p:last-child {
+    margin-bottom: 0;
   }
 
   .skills-grid {
