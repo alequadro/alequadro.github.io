@@ -1,0 +1,249 @@
+---
+import Base from '../layouts/Base.astro';
+import ContactLinks from './ContactLinks.astro';
+import Icon from './Icon.astro';
+import { certifications, getContent, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const copy = getContent(locale);
+const currentCertifications = certifications.filter((cert) => cert.active);
+const previousCertifications = certifications.filter((cert) => !cert.active);
+---
+
+<Base title={copy.meta.title} description={copy.meta.description} locale={locale}>
+  <div class="container masthead">
+    <h1>Alessandro Quadrini</h1>
+  </div>
+  <section class="hero container" aria-label={copy.hero.label}>
+    <img src="/profile-portrait.png" alt={copy.hero.portrait} class="portrait" width="400" height="400" fetchpriority="high" />
+    <div class="hero-intro">
+      <p class="hero-role">{copy.hero.roleLines[0]}<br />{copy.hero.roleLines[1]}</p>
+      <p class="hero-tagline">{copy.hero.tagline}</p>
+      <p class="hero-personal">{copy.hero.personalLead} <strong>alequadro</strong>. {copy.hero.personalAfter}</p>
+      <ContactLinks locale={locale} />
+    </div>
+    <nav class="reading-index" aria-label={copy.index.title}>
+      <h2>{copy.index.title}</h2>
+      <a href="#about">{copy.index.about}<Icon name="arrow" /></a>
+      <a href="#nickname">{copy.index.nickname}<Icon name="arrow" /></a>
+      <a href="#life">{copy.index.life}<Icon name="arrow" /></a>
+      <a href="#experience">{copy.index.experience}<Icon name="arrow" /></a>
+      <a href="#skills">{copy.index.skills}<Icon name="arrow" /></a>
+      <a href="#certifications">{copy.index.certifications}<Icon name="arrow" /></a>
+    </nav>
+  </section>
+
+  <section id="about" class="spread-section about-section container" tabindex="-1">
+    <h2>{copy.headings.about}</h2>
+    <div class="section-body prose"><p>{copy.about}</p></div>
+  </section>
+  <section id="nickname" class="spread-section nickname-section container" aria-labelledby="nickname-heading" tabindex="-1">
+    <h3 id="nickname-heading">{copy.headings.nickname}</h3>
+    <div class="section-body prose"><p>{copy.nickname}</p></div>
+  </section>
+
+  <section id="life" class="spread-section content-section container" tabindex="-1">
+    <h2>{copy.headings.life}</h2>
+    <div class="section-body prose">
+      {copy.life.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+  </section>
+
+  <section id="experience" class="spread-section content-section container" tabindex="-1">
+    <h2>{copy.headings.experience}</h2>
+    <div class="section-body jobs">
+      {copy.experience.map((job) => (
+        <article class="job">
+          <header class="job-heading">
+            <div><h3>{job.company}</h3><p class="job-role">{job.role}</p></div>
+            <p class="job-period">{job.period}</p>
+          </header>
+          <p class="job-summary prose">{job.summary}</p>
+          <ul class="job-contributions prose">
+            {job.contributions.map((contribution) => <li>{contribution}</li>)}
+          </ul>
+          <details class="job-details">
+            <summary>{copy.story.action}<span class="sr-only"> {copy.story.context} {job.company}</span></summary>
+            <div class="job-narrative prose">
+              {job.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            </div>
+          </details>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="skills" class="spread-section content-section container" tabindex="-1">
+    <h2>{copy.headings.skills}</h2>
+    <div class="section-body">
+      <dl class="skills-list">
+        {copy.skills.map((skill) => (
+          <div class="skill-row">
+            <dt>{skill.group}</dt>
+            <dd><ul>{skill.items.map((item) => <li>{item}</li>)}</ul></dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section id="certifications" class="spread-section content-section container" tabindex="-1">
+    <h2>{copy.headings.certifications}</h2>
+    <div class="section-body">
+      <article class="cert-achievement" aria-labelledby="kubestronaut-heading">
+        <div class="cert-achievement-header">
+          <h3 id="kubestronaut-heading"><a href="https://www.cncf.io/training/kubestronaut/" target="_blank" rel="noopener noreferrer">Kubestronaut</a></h3>
+          <span class="badge badge-expired">{copy.credentials.expired}</span>
+        </div>
+        <p class="prose">{copy.credentials.explanation}</p>
+      </article>
+      <h3 class="cert-subheading">{copy.credentials.currentHeading}</h3>
+      <ul class="cert-list">
+        {currentCertifications.map((cert) => (
+          <li><span>{cert.name}</span><span class="badge">{copy.credentials.current}</span></li>
+        ))}
+      </ul>
+      <details class="cert-history">
+        <summary>{copy.credentials.previousHeading} ({previousCertifications.length})</summary>
+        <p class="cert-note prose">{copy.credentials.previousNote}</p>
+        <ul class="previous-certifications prose">
+          {previousCertifications.map((cert) => <li>{cert.name} <span class="sr-only">({copy.credentials.expired})</span></li>)}
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <section id="education" class="spread-section content-section education-section container">
+    <h2>{copy.headings.education}</h2>
+    <div class="section-body">
+      <div><h3>{copy.education.school}</h3><p class="prose">{copy.education.degree}</p></div>
+      <div class="languages">
+        <h3>{copy.education.languagesHeading}</h3>
+        <p class="prose">{copy.education.languages}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="spread-section contact-section container" aria-labelledby="contact-heading">
+    <h2 id="contact-heading">{copy.contact.headingLines[0]}<br />{copy.contact.headingLines[1]}</h2>
+    <div class="section-body">
+      <div class="prose">{copy.contact.paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div>
+      <ContactLinks locale={locale} />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .masthead { padding-block: 1.7vw 0.6vw; border-bottom: 2px solid var(--accent); }
+  .masthead h1 { font-size: clamp(2.5rem, 7.65vw, 8.5rem); line-height: 1; letter-spacing: -0.025em; text-wrap: nowrap; }
+  .hero { display: grid; grid-template-columns: 25.83% minmax(0, 1fr) 19.13%; column-gap: 3.45%; padding-block: 2.2vw 1.85vw; border-bottom: 1px solid var(--border); }
+  .portrait { display: block; width: 100%; height: auto; aspect-ratio: 374 / 404; object-fit: cover; border-radius: 16px; }
+  .hero-role { color: var(--accent); font-family: var(--display); font-weight: 700; font-size: clamp(1.75rem, 3.3vw, 3.5rem); line-height: 1.05; letter-spacing: -0.015em; }
+  .hero-tagline { max-width: 43.55vw; font-size: clamp(1.25rem, 1.9vw, 2rem); line-height: 1.3; margin-top: 1.4vw; }
+  .hero-personal { max-width: 43.55vw; font-size: clamp(1.0625rem, 1.4vw, 1.5rem); line-height: 1.45; margin-top: 1.1vw; }
+  .hero-intro :global(.contact-links) { margin-top: 1.1vw; }
+  .hero-intro :global(.contact-links a) { font-size: clamp(1rem, 1.25vw, 1.25rem); }
+  .reading-index { border-left: 1px solid var(--border); padding-left: 3.1vw; padding-top: 0.5vw; }
+  .reading-index h2 { font-family: var(--body); font-size: clamp(1.25rem, 1.65vw, 1.75rem); line-height: 1.25; margin-bottom: 0.7vw; letter-spacing: 0; text-wrap: nowrap; }
+  .reading-index a { display: flex; align-items: center; justify-content: space-between; min-height: max(44px, 2.75vw); font-size: clamp(1rem, 1.25vw, 1.375rem); }
+  :global(html:not([data-theme='dark'])) .hero-role { color: var(--text); }
+  :global(html:not([data-theme='dark'])) .reading-index a { color: var(--text-muted); }
+  :global(html:not([data-theme='dark'])) .reading-index a:is(:hover, :focus-visible) { color: var(--accent); }
+  .reading-index :global(svg) { width: 0.85em; height: 0.85em; opacity: 0; transform: translateX(-4px); transition: opacity 180ms ease, transform 180ms cubic-bezier(0.16, 1, 0.3, 1); }
+  .reading-index a:is(:hover, :focus-visible) :global(svg) { opacity: 1; transform: none; }
+  .spread-section { display: grid; grid-template-columns: var(--section-label) minmax(0, 1fr); }
+  .section-body { min-width: 0; border-left: 1px solid var(--border); padding-left: var(--section-inset); }
+  .prose { font-size: clamp(1.0625rem, 1.3vw, 1.375rem); line-height: 1.5; }
+  .prose p { max-width: 75ch; }
+  .prose p + p { margin-top: 1rem; }
+  .about-section { padding-block: 2.5vw 1.25vw; }
+  .nickname-section { padding-block: 0.75vw 2.75vw; }
+  .nickname-section h3 { font-size: clamp(1.125rem, 1.55vw, 1.625rem); padding-top: 1.2vw; }
+  .nickname-section .section-body { border-left: 0; }
+  .nickname-section p { border-top: 1px solid var(--border); padding-top: 1vw; }
+  .content-section { border-top: 1px solid var(--border); padding-block: clamp(2.5rem, 4vw, 4.5rem); }
+  .content-section > h2 { padding-right: 1.25rem; }
+  #certifications > h2 { font-size: clamp(1.5rem, 2.75vw, 3rem); }
+  .content-section .section-body { border-left: 0; }
+  .job + .job { border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 2.5rem; }
+  .job-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem 2rem; }
+  .job-heading h3 { font: 700 clamp(1.5rem, 2.1vw, 2.25rem)/1.1 var(--display); letter-spacing: -0.02em; }
+  .job-role { font-size: clamp(1.0625rem, 1.25vw, 1.375rem); margin-top: 0.6rem; }
+  .job-period { flex-shrink: 0; color: var(--text-muted); font-size: 1.0625rem; font-variant-numeric: tabular-nums; }
+  .job-summary { margin-top: 1.5rem; max-width: 75ch; }
+  .job-contributions { padding-left: 1.25rem; margin-block: 1rem 0.5rem; display: grid; gap: 0.5rem; max-width: 75ch; }
+  .job-contributions li::marker { color: var(--accent); }
+  :is(.job-details, .cert-history) summary { cursor: pointer; color: var(--accent); width: fit-content; min-height: 44px; padding-block: 0.65rem; font-weight: 600; }
+  :is(.job-details, .cert-history) summary:hover { text-decoration: underline; text-underline-offset: 0.22em; }
+  .job-narrative { margin-top: 1rem; }
+  .skills-list { margin: 0; }
+  .skill-row { display: grid; grid-template-columns: minmax(10rem, 37%) minmax(0, 1fr); gap: 1rem 2rem; padding-block: 1.25rem; border-bottom: 1px solid var(--border); font-size: clamp(1.0625rem, 1.25vw, 1.375rem); line-height: 1.5; }
+  .skill-row:first-child { padding-top: 0; }
+  .skill-row:last-child { border-bottom: 0; padding-bottom: 0; }
+  .skill-row dt { font-weight: 600; }
+  .skill-row dd { margin: 0; }
+  .skill-row ul { display: flex; flex-wrap: wrap; gap: 0 0.3em; list-style: none; padding: 0; margin: 0; }
+  .skill-row li:not(:last-child)::after { content: ','; }
+  .cert-achievement { padding-bottom: 2rem; }
+  .cert-achievement-header { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .cert-achievement h3 { font: 700 clamp(1.5rem, 2.3vw, 2.5rem)/1.1 var(--display); letter-spacing: -0.02em; }
+  .badge { display: inline-flex; align-items: center; align-self: center; flex-shrink: 0; font-size: 0.875rem; line-height: 1.25; padding: 0.3rem 0.6rem; color: var(--accent); border: 1px solid var(--border); border-radius: 4px; }
+  .badge-expired { color: var(--text-muted); }
+  .cert-subheading { font-size: 1.25rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .cert-list { margin: 0; padding: 0; list-style: none; }
+  .cert-list li { display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--border); padding-block: 1.25rem; font-size: clamp(1.0625rem, 1.25vw, 1.375rem); line-height: 1.5; }
+  .cert-history { margin-top: 1rem; }
+  .cert-note { color: var(--text-muted); margin-top: 0.75rem; }
+  .previous-certifications { display: grid; gap: 0.5rem; color: var(--text-muted); padding-left: 1.25rem; }
+  .education-section h3 { margin-bottom: 0.75rem; }
+  .languages { margin-top: 2rem; }
+  .contact-section { border-top: 2px solid var(--accent); padding-block: clamp(3rem, 6vw, 6.5rem); }
+  .contact-section .section-body { border-left: 0; }
+  .contact-section :global(.contact-links) { margin-top: 2rem; }
+  @media (max-width: 72rem) {
+    .hero { grid-template-columns: 30% minmax(0, 1fr); column-gap: 4%; row-gap: 2rem; }
+    .reading-index { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.5rem; padding: 1rem 0 0; border-left: 0; border-top: 1px solid var(--border); }
+    .reading-index h2 { font-size: 1.25rem; margin: 0 0.5rem 0 0; }
+    .reading-index a { min-height: 44px; font-size: 1.125rem; }
+    .reading-index :global(svg) { display: none; }
+    .hero-role { font-size: clamp(1.75rem, 3.65vw, 3rem); }
+    .hero-tagline { font-size: clamp(1.25rem, 2.3vw, 1.75rem); }
+    .hero-personal { font-size: clamp(1.0625rem, 1.7vw, 1.25rem); }
+    .hero-tagline, .hero-personal { max-width: none; }
+    .job-heading { flex-direction: column; gap: 0.5rem; }
+    .job-period { font-size: 1rem; }
+  }
+  @media (max-width: 40rem) {
+    .masthead { padding-block: 1.5rem 1.25rem; }
+    .masthead h1 { font-size: clamp(2.5rem, 10.5vw, 4.25rem); line-height: 0.98; text-wrap: balance; max-width: 11ch; }
+    .hero { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding-block: 1.5rem 1.75rem; }
+    .portrait { width: min(70%, 19rem); aspect-ratio: 1; }
+    .hero-role { font-size: clamp(1.5rem, 6.5vw, 2.5rem); line-height: 1.1; }
+    .hero-tagline { font-size: 1.25rem; line-height: 1.4; margin-top: 1.25rem; }
+    .hero-personal { font-size: 1.0625rem; line-height: 1.5; margin-top: 1rem; }
+    .hero-intro :global(.contact-links) { margin-top: 1.5rem; }
+    .reading-index { gap: 0.25rem 1.25rem; padding-top: 1.25rem; }
+    .reading-index h2 { width: 100%; margin-bottom: 0.5rem; }
+    .spread-section { grid-template-columns: minmax(0, 1fr); }
+    .section-body { border-left: 0; padding-left: 0; }
+    .about-section { padding-block: 2rem 0.5rem; gap: 1rem; }
+    .nickname-section { padding-block: 1rem 2rem; gap: 0.75rem; }
+    .nickname-section h3 { padding: 0; }
+    .nickname-section p { padding-top: 0; border-top: 0; }
+    .prose { font-size: 1.0625rem; line-height: 1.5; }
+    .content-section { gap: 1.5rem; padding-block: 2.5rem; }
+    .content-section > h2 { padding-right: 0; }
+    #certifications > h2 { font-size: 1.875rem; }
+    .job-heading h3 { font-size: 1.5rem; }
+    .job-role { font-size: 1.0625rem; }
+    .job-summary { margin-top: 1rem; }
+    .job + .job { margin-top: 2rem; padding-top: 2rem; }
+    .skill-row { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; }
+    .cert-list li { align-items: start; font-size: 1.0625rem; }
+    .cert-list .badge { align-self: start; margin-top: 0.15rem; }
+    .contact-section { gap: 1.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .reading-index :global(svg) { transition: none; transform: none; } }
+</style>

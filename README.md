@@ -14,9 +14,14 @@ Live at <https://alequadro.github.io>.
 
 ```
 src/
+  components/Portfolio.astro # Shared page layout for both languages
   components/         # Shared contact links and small SVG icons
+  i18n/en.json         # English content
+  i18n/it.json         # Italian content
+  i18n/index.ts        # Language routes and shared credential names/status
   layouts/Base.astro   # HTML shell: meta/CSP/OG tags, nav, theme toggle, global CSS
-  pages/index.astro    # Personal introduction, experience, skills, credentials, contact
+  pages/index.astro    # English page at /
+  pages/it/index.astro # Italian page at /it/
 public/
   theme.js             # Theme state + mobile menu enhancements (the only shipped JS)
   me.jpg, profile-portrait.png, favicon.svg
@@ -29,9 +34,15 @@ public/
 
 Deliberately minimal - a portfolio page doesn't need a SPA.
 
-- **Content as data**: experience, skills, and certifications are plain JS arrays in
-  `index.astro`'s frontmatter, rendered with `.map()`. Editing the resume means editing
-  data, not markup.
+- **Localized content**: English and Italian copy, experience, and skills live in
+  `src/i18n/en.json` and `src/i18n/it.json`. Official credential names and status are
+  shared in `src/i18n/index.ts`. Both routes render the same `Portfolio.astro`
+  component, keeping content changes separate from layout.
+- **Languages**: English is the default at `/`; Italian is available at `/it/`.
+  The header links to the other language without requiring JavaScript. Each page
+  supplies its own document language, description, canonical URL, and alternate
+  language links. The existing script preserves section fragments when switching;
+  theme preferences continue to apply to both versions.
 - **Typography**: self-hosted Special Gothic headings and Source Sans 3 body text.
   The editorial layout uses a name masthead, a portrait spread, and aligned section
   labels. Mobile reflows into a single reading column.

@@ -19,11 +19,23 @@
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', syncThemeControl, { once: true });
-  } else {
-    syncThemeControl();
+  function syncLanguageLink() {
+    var link = document.querySelector('[data-language-switch]');
+    if (link) link.hash = window.location.hash;
   }
+
+  function initializeControls() {
+    syncThemeControl();
+    syncLanguageLink();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeControls, { once: true });
+  } else {
+    initializeControls();
+  }
+
+  window.addEventListener('hashchange', syncLanguageLink);
 
   document.addEventListener('click', function (event) {
     if (!(event.target instanceof Element)) return;

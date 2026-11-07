@@ -1,12 +1,14 @@
 ---
 import Icon from './Icon.astro';
-interface Props { compact?: boolean; }
-const { compact = false } = Astro.props;
+import { getContent, type Locale } from '../i18n';
+interface Props { compact?: boolean; locale?: Locale; }
+const { compact = false, locale = 'en' } = Astro.props;
+const copy = getContent(locale).contact;
 ---
 
 <div class:list={['contact-links', { 'contact-links-compact': compact }]}>
-  <a class="email-link" href="mailto:quadrini.alessandro@proton.me"><Icon name="mail" />Email me</a>
+  <a class="email-link" href="mailto:quadrini.alessandro@proton.me"><Icon name="mail" />{copy.email}</a>
   <a href="https://www.linkedin.com/in/alessandro-quadrini" target="_blank" rel="noopener noreferrer"><Icon name="linkedin" />LinkedIn</a>
   <a href="https://github.com/alequadro" target="_blank" rel="noopener noreferrer"><Icon name="github" />GitHub</a>
-  <a href="https://alequadro.github.io/resume" target="_blank" rel="noopener noreferrer"><Icon name="resume" />Resume</a>
+  <a href="https://alequadro.github.io/resume" target="_blank" rel="noopener noreferrer"><Icon name="resume" />{copy.resume}</a>
 </div>

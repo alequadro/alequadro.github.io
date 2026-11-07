@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "title": "Alessandro Quadrini - Senior DevOps Engineer",
+    "description": "Il portfolio di Alessandro Quadrini, Senior DevOps e Platform Engineer con oltre 7 anni di esperienza nella realizzazione di piattaforme cloud-native sicure e scalabili."
+  },
+  "navigation": {
+    "main": "Navigazione principale",
+    "home": "Alessandro Quadrini, pagina iniziale",
+    "sections": "Sezioni",
+    "skip": "Vai al contenuto",
+    "theme": "Cambia tema",
+    "skills": "Competenze"
+  },
+  "headings": {
+    "about": "Chi sono",
+    "nickname": "Perché AleQuadro?",
+    "life": "Fuori dal lavoro",
+    "experience": "Esperienza",
+    "skills": "Competenze tecniche",
+    "certifications": "Certificazioni",
+    "education": "Formazione e lingue"
+  },
+  "index": {
+    "title": "In questa pagina",
+    "about": "Chi sono",
+    "nickname": "Perché AleQuadro?",
+    "life": "Fuori dal lavoro",
+    "experience": "Esperienza",
+    "skills": "Competenze",
+    "certifications": "Certificazioni"
+  },
+  "hero": {
+    "label": "Presentazione",
+    "portrait": "Ritratto di Alessandro Quadrini",
+    "roleLines": [
+      "Senior DevOps e",
+      "Platform Engineer"
+    ],
+    "tagline": "Progetto e gestisco piattaforme cloud-native sicure, scalabili ed efficienti anche nei costi.",
+    "personalLead": "Puoi chiamarmi anche",
+    "personalAfter": "Fuori dal lavoro, mi piacciono i videogiochi, l'allenamento e la musica."
+  },
+  "about": "Sono un Senior DevOps e Platform Engineer con oltre 7 anni di esperienza nella progettazione e nella gestione di piattaforme cloud-native in diversi settori. Ho guidato team DevOps e realizzato infrastrutture sicure e scalabili per aziende e contesti regolamentati.",
+  "nickname": "È l'unione dei miei due soprannomi: Ale e Quadro. Ale si spiega da sé. Quadro è il soprannome che mi hanno dato i miei amici quando mi sono trasferito in Toscana nel 2009. Da allora è rimasto con me ed è diventato parte della mia identità.",
+  "life": [
+    "La mia passione per i computer è nata quando avevo circa sei anni e mio padre portò a casa un PC assemblato. Ricordo ancora molto bene il passaggio dai floppy disk ai CD. All'epoca capivo a malapena a cosa servissero, ma ogni nuova tecnologia mi affascinava.",
+    "I videogiochi hanno sempre avuto un ruolo importante nella mia vita e restano una delle mie più grandi passioni. Ripensandoci, sono stati proprio loro ad accendere il mio interesse per i computer, l'hardware e il software, portandomi poi a lavorare nell'IT.",
+    "Al di fuori del lavoro, che credo sia importante bilanciare con i propri interessi, mi piace allenarmi e ascoltare musica. E sì, sono un grande fan di Michael Jackson!"
+  ],
+  "experience": [
+    {
+      "role": "Senior DevOps Engineer · Piattaforma Cloud",
+      "company": "Cardo AI",
+      "period": "Febbraio 2026 - oggi",
+      "summary": "Contribuisco alla realizzazione e alla gestione della piattaforma cloud di un prodotto fintech utilizzato da clienti istituzionali in Europa e negli Stati Uniti.",
+      "contributions": [
+        "Automatizzo l'infrastruttura e il rilascio del software su AWS e Kubernetes.",
+        "Rendo i controlli di sicurezza, le policy as code e la conformità parte del lavoro quotidiano dei team tecnici.",
+        "Miglioro la gestione dei costi cloud e automatizzo le attività ripetitive."
+      ],
+      "paragraphs": [
+        "Entrare in Cardo AI ha segnato un nuovo capitolo stimolante per me. Passare al fintech ha significato imparare a costruire e gestire piattaforme in cui affidabilità, sicurezza e fiducia fanno parte di ogni decisione. Lavoro su un ambiente AWS distribuito su più regioni e sulle sue piattaforme Kubernetes, contribuendo alle fondamenta di un prodotto cloud-native utilizzato da clienti istituzionali in Europa e negli Stati Uniti.",
+        "Una parte importante del mio lavoro consiste nel rendere la piattaforma più semplice da usare e più sicura da modificare. Ho sviluppato automazioni con Terraform, GitOps, GitHub Actions e AWS CodeBuild, migliorando anche il modo in cui sicurezza e conformità vengono integrate nelle attività quotidiane anziché essere trattate separatamente. Mi sono occupato di policy as code, preparazione a SOC2 e iniziative FinOps. Continuo inoltre a esplorare applicazioni pratiche di n8n e dell'intelligenza artificiale per ridurre il lavoro ripetitivo e lasciare più spazio a un'ingegneria attenta e ragionata."
+      ]
+    },
+    {
+      "role": "DevOps Engineer · Team Lead",
+      "company": "Florence Consulting Group",
+      "period": "Dicembre 2019 - gennaio 2026",
+      "summary": "Sono cresciuto da ingegnere junior a responsabile di un team DevOps, aiutando le aziende a modernizzare l'infrastruttura e il modo in cui rilasciano software.",
+      "contributions": [
+        "Ho progettato infrastrutture cloud, ibride e on-premises.",
+        "Ho introdotto Kubernetes, automatizzato i rilasci e adottato strumenti per comprendere il comportamento dei sistemi.",
+        "Ho supportato la crescita di altri ingegneri e collaborato con gli stakeholder alla strategia tecnica."
+      ],
+      "paragraphs": [
+        "Florence Consulting Group è stato il mio primo vero lavoro e sarò sempre grato ai suoi CEO, Iacopo e Niccolò, per avermi dato la possibilità di crescere. Sono entrato come junior e mi sono avvicinato gradualmente al mondo DevOps, assumendo responsabilità tecniche e organizzative sempre più complesse, fino a diventare Team Lead. Quel percorso ha dato forma al mio modo di affrontare l'ingegneria: restare curioso, assumermi la responsabilità del mio lavoro e rendere comprensibili i sistemi complessi a chi li gestisce.",
+        "La consulenza mi ha dato l'opportunità di lavorare su ambienti cloud, ibridi e on-premises, aiutando i team a passare da sistemi legacy a piattaforme cloud-native più semplici da mantenere. Ho progettato infrastrutture come codice, introdotto Kubernetes e pratiche GitOps, migliorato le pipeline di rilascio e sviluppato l'osservabilità dei sistemi che seguivamo. Con la crescita del mio ruolo, ho anche affiancato altri ingegneri e collaborato con figure decisionali su strategia, partnership e su come il lavoro tecnico potesse creare valore duraturo per l'azienda. Molti miglioramenti quotidiani sono arrivati da piccoli strumenti e automazioni in Python e Bash che semplificavano le attività operative ricorrenti."
+      ]
+    },
+    {
+      "role": "Programmatore junior (alternanza scuola-lavoro)",
+      "company": "OSItalia",
+      "period": "Giugno 2018 - settembre 2018",
+      "summary": "Un'esperienza di alternanza scuola-lavoro che mi ha avvicinato allo sviluppo software in un contesto professionale.",
+      "contributions": [
+        "Ho applicato la programmazione orientata agli oggetti e i design pattern in Delphi.",
+        "Ho realizzato un'applicazione per la gestione di un database."
+      ],
+      "paragraphs": [
+        "L'esperienza in OSItalia è stata la mia prima occasione per scoprire come si sviluppa software in un ambiente professionale. Ho imparato i fondamenti dei design pattern e della progettazione orientata agli oggetti con Delphi, per poi applicarli nella realizzazione di un'applicazione per la gestione di un database. Più di qualsiasi tecnologia specifica, quell'esperienza mi ha insegnato quanta cura, comunicazione e pazienza servano per trasformare un'idea in qualcosa che le persone possano davvero usare."
+      ]
+    }
+  ],
+  "skills": [
+    { "group": "Cloud", "items": ["AWS", "Azure", "GCP"] },
+    { "group": "Container e orchestrazione", "items": ["Kubernetes (EKS)", "KEDA", "Karpenter"] },
+    { "group": "Infrastruttura come codice", "items": ["Terraform"] },
+    { "group": "CI/CD", "items": ["GitHub Actions", "GitLab CI/CD", "Jenkins", "Azure DevOps"] },
+    { "group": "GitOps e Platform Engineering", "items": ["ArgoCD", "Helm", "Kustomize"] },
+    { "group": "Pratiche DevOps", "items": ["DevSecOps", "Automazione", "FinOps"] },
+    { "group": "Sicurezza", "items": ["Sicurezza dei container", "Sicurezza cloud", "Sicurezza di Kubernetes", "Prowler", "Trivy"] },
+    { "group": "Osservabilità", "items": ["Grafana (LGTM)", "Elastic Stack"] },
+    { "group": "Programmazione e scripting", "items": ["Python", "Bash"] }
+  ],
+  "credentials": {
+    "explanation": "Ho ottenuto il titolo di Kubestronaut completando tutte e cinque le certificazioni Kubernetes della CNCF: CKA, CKAD, CKS, KCNA e KCSA.",
+    "current": "Valida",
+    "expired": "Scaduto",
+    "currentHeading": "Certificazioni attuali",
+    "previousHeading": "Certificazioni precedenti",
+    "previousNote": "Queste certificazioni Kubernetes sono scadute. Ho scelto di non rinnovarle per il costo complessivo dei rinnovi."
+  },
+  "story": {
+    "action": "Leggi la storia completa",
+    "context": "del mio ruolo in"
+  },
+  "education": {
+    "school": "I.T.I.S. Tullio Buzzi",
+    "degree": "Diploma di scuola superiore in Informatica e Telecomunicazioni",
+    "languagesHeading": "Lingue",
+    "languages": "Italiano (madrelingua) · Inglese (fluente, C1)"
+  },
+  "contact": {
+    "email": "Scrivimi",
+    "resume": "CV",
+    "headingLines": ["Restiamo in", "contatto"],
+    "paragraphs": [
+      "Se vuoi parlare di ingegneria, scambiare idee o semplicemente salutarmi, mi farà piacere sentirti.",
+      "Sono sempre alla ricerca di sfide stimolanti che mi permettano di ampliare le mie conoscenze. Se ne hai una, mi piacerebbe saperne di più!"
+    ]
+  },
+  "footer": {
+    "builtWith": "Realizzato con"
+  }
+}

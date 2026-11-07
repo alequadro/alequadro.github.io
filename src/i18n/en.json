@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "title": "Alessandro Quadrini - Senior DevOps Engineer",
+    "description": "Portfolio of Alessandro Quadrini, Senior DevOps and Platform Engineer with 7+ years of experience building secure, scalable cloud-native platforms."
+  },
+  "navigation": {
+    "main": "Main navigation",
+    "home": "Alessandro Quadrini, home",
+    "sections": "Sections",
+    "skip": "Skip to content",
+    "theme": "Toggle color theme",
+    "skills": "Skills"
+  },
+  "headings": {
+    "about": "About Me",
+    "nickname": "Why AleQuadro?",
+    "life": "Beyond Work",
+    "experience": "Experience",
+    "skills": "Technical Skills",
+    "certifications": "Certifications",
+    "education": "Education & Languages"
+  },
+  "index": {
+    "title": "On this page",
+    "about": "About me",
+    "nickname": "Why AleQuadro?",
+    "life": "Beyond work",
+    "experience": "Experience",
+    "skills": "Skills",
+    "certifications": "Certifications"
+  },
+  "hero": {
+    "label": "Introduction",
+    "portrait": "Portrait of Alessandro Quadrini",
+    "roleLines": [
+      "Senior DevOps &",
+      "Platform Engineer"
+    ],
+    "tagline": "I design and run cloud-native platforms that are secure, scalable, and cost-effective.",
+    "personalLead": "You can also call me",
+    "personalAfter": "Outside work, I enjoy gaming, working out, and music."
+  },
+  "about": "I'm a Senior DevOps and Platform Engineer with 7+ years of experience designing and operating cloud-native platforms across many sectors. I've led DevOps teams and delivered secure, scalable infrastructure for enterprise and regulated environments.",
+  "nickname": "It's a combination of my two nicknames: Ale and Quadro. Ale is pretty self-explanatory. Quadro is a nickname my friends gave me when I moved to Tuscany in 2009. It stuck, and has been part of my identity ever since.",
+  "life": [
+    "I developed a passion for computers at around the age of six, when my father brought home a custom-built PC. I still vividly remember the transition from floppy disks to CDs. At the time, I barely understood their purpose, but I was fascinated by every new piece of technology.",
+    "Gaming has always been a big part of my life and remains one of my greatest passions. Looking back, it's what sparked my interest in computers, hardware, and software, eventually leading me toward a career in IT.",
+    "Outside of work (which I believe is important to balance with personal interests!) I enjoy working out and listening to music. And yes, I'm a huge Michael Jackson fan!"
+  ],
+  "experience": [
+    {
+      "role": "Senior DevOps Engineer · Cloud Platform",
+      "company": "Cardo AI",
+      "period": "February 2026 - Present",
+      "summary": "I help build and operate the cloud platform behind a fintech product used by institutional clients in Europe and the US.",
+      "contributions": [
+        "Automate infrastructure and software delivery across AWS and Kubernetes.",
+        "Build security checks, policy as code, and compliance readiness into everyday engineering.",
+        "Improve cloud cost management and automate repetitive work."
+      ],
+      "paragraphs": [
+        "Joining Cardo AI marked an exciting new chapter for me. Moving into fintech meant learning how to build and operate platforms where reliability, security, and trust are part of every decision. I work across a multi-region AWS environment and its Kubernetes platforms, helping provide the foundation for a cloud-native product used by institutional clients in Europe and the US.",
+        "A large part of my work is about making the platform easier to use and safer to change. I have built automation around Terraform, GitOps, GitHub Actions, and AWS CodeBuild, while also improving how security and compliance are embedded in everyday engineering rather than treated as separate activities. I have worked on policy as code, SOC2 readiness, and FinOps initiatives, and I continue to explore practical uses of n8n and AI to remove repetitive work and leave more room for thoughtful engineering."
+      ]
+    },
+    {
+      "role": "DevOps Engineer · Team Lead",
+      "company": "Florence Consulting Group",
+      "period": "December 2019 - January 2026",
+      "summary": "I grew from a junior engineer into a DevOps team lead, helping organizations modernize their infrastructure and how they deliver software.",
+      "contributions": [
+        "Designed infrastructure across cloud, hybrid, and on-premises environments.",
+        "Introduced Kubernetes, automated delivery, and tools to understand how systems behave.",
+        "Mentored engineers and worked with stakeholders on technical strategy."
+      ],
+      "paragraphs": [
+        "Florence Consulting Group was my first real job, and I will always be grateful to its CEOs, Iacopo and Niccolò, for giving me the opportunity to grow there. I joined as a Junior and gradually found my way into DevOps, taking on increasingly complex technical and organizational responsibilities until I became Team Lead. That journey shaped how I approach engineering: stay curious, take ownership, and make difficult systems understandable for the people who operate them.",
+        "Consulting gave me the chance to work across cloud, hybrid, and on-premises environments, helping teams move from legacy systems toward more maintainable cloud-native platforms. I designed infrastructure with code, introduced Kubernetes and GitOps practices, improved delivery pipelines, and built observability around the systems we supported. As my role grew, I also mentored engineers and worked with senior stakeholders on strategy, partnerships, and how technical work could create lasting value for the business. Much of the day-to-day improvement came from small tools and automations in Python and Bash that removed friction from recurring operational work."
+      ]
+    },
+    {
+      "role": "Junior Programmer (School/Work Alternation)",
+      "company": "OSItalia",
+      "period": "June 2018 - September 2018",
+      "summary": "A school/work placement that introduced me to professional software development.",
+      "contributions": [
+        "Applied object-oriented programming and design patterns in Delphi.",
+        "Built a database management application."
+      ],
+      "paragraphs": [
+        "My time at OSItalia was my first opportunity to see what software development looked like in a professional environment. I learned the fundamentals of programming patterns and object-oriented design with Delphi, then applied them while building a database management application. More than any specific technology, the experience taught me how much care, communication, and patience go into turning an idea into something people can actually use."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "group": "Cloud",
+      "items": [
+        "AWS",
+        "Azure",
+        "GCP"
+      ]
+    },
+    {
+      "group": "Containers & Orchestration",
+      "items": [
+        "Kubernetes (EKS)",
+        "KEDA",
+        "Karpenter"
+      ]
+    },
+    {
+      "group": "Infrastructure as Code",
+      "items": [
+        "Terraform"
+      ]
+    },
+    {
+      "group": "CI/CD",
+      "items": [
+        "GitHub Actions",
+        "GitLab CI/CD",
+        "Jenkins",
+        "Azure DevOps"
+      ]
+    },
+    {
+      "group": "GitOps & Platform Engineering",
+      "items": [
+        "ArgoCD",
+        "Helm",
+        "Kustomize"
+      ]
+    },
+    {
+      "group": "DevOps Practices",
+      "items": [
+        "DevSecOps",
+        "Automation",
+        "FinOps"
+      ]
+    },
+    {
+      "group": "Security",
+      "items": [
+        "Container Security",
+        "Cloud Security",
+        "Kubernetes Security",
+        "Prowler",
+        "Trivy"
+      ]
+    },
+    {
+      "group": "Observability",
+      "items": [
+        "Grafana (LGTM)",
+        "Elastic Stack"
+      ]
+    },
+    {
+      "group": "Programming & Scripting",
+      "items": [
+        "Python",
+        "Bash"
+      ]
+    }
+  ],
+  "credentials": {
+    "explanation": "I earned the Kubestronaut designation by completing all five CNCF Kubernetes certifications: CKA, CKAD, CKS, KCNA, and KCSA.",
+    "current": "Current",
+    "expired": "Expired",
+    "currentHeading": "Current certifications",
+    "previousHeading": "Previously held certifications",
+    "previousNote": "These Kubernetes certifications have expired. I chose not to renew them because of the combined renewal costs."
+  },
+  "story": {
+    "action": "Read the full story",
+    "context": "about my role at"
+  },
+  "education": {
+    "school": "I.T.I.S. Tullio Buzzi",
+    "degree": "High School Degree in Computer Science and Telecommunications",
+    "languagesHeading": "Languages",
+    "languages": "Italian (native) · English (fluent, C1)"
+  },
+  "contact": {
+    "email": "Email me",
+    "resume": "Resume",
+    "headingLines": [
+      "Let's keep",
+      "in touch"
+    ],
+    "paragraphs": [
+      "If you'd like to talk about engineering, swap ideas, or just say hello, I'd love to hear from you.",
+      "I'm always looking for stimulating challenges that keep expanding my knowledge. If you have one, I'd love to hear about it!"
+    ]
+  },
+  "footer": {
+    "builtWith": "Built with"
+  }
+}

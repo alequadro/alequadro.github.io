@@ -1,23 +1,28 @@
 ---
 import ContactLinks from '../components/ContactLinks.astro';
+import { getContent, languages, type Locale } from '../i18n';
 interface Props {
   title: string;
   description: string;
+  locale?: Locale;
 }
 
-const { title, description } = Astro.props;
+const { title, description, locale = 'en' } = Astro.props;
+const copy = getContent(locale);
+const alternateLocale: Locale = locale === 'en' ? 'it' : 'en';
+const alternate = languages[alternateLocale];
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const sections = [
-  { href: '#about', label: 'About Me' },
-  { href: '#life', label: 'Beyond Work' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#certifications', label: 'Certifications' },
+  { href: '#about', label: copy.headings.about },
+  { href: '#life', label: copy.headings.life },
+  { href: '#experience', label: copy.headings.experience },
+  { href: '#skills', label: copy.navigation.skills },
+  { href: '#certifications', label: copy.headings.certifications },
 ];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,27 +34,32 @@ const sections = [
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={new URL(languages.en.path, Astro.site)} />
+    <link rel="alternate" hreflang="it" href={new URL(languages.it.path, Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(languages.en.path, Astro.site)} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={locale === 'it' ? 'it_IT' : 'en_US'} />
+    <meta property="og:locale:alternate" content={locale === 'it' ? 'en_US' : 'it_IT'} />
     <meta property="og:image" content={new URL('/me.jpg', Astro.site)} />
     <link rel="preload" href="/fonts/special-gothic-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin />
     <script is:inline src="/theme.js"></script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">{copy.navigation.skip}</a>
     <header class="site-header">
-      <nav class="container nav" aria-label="Main navigation">
-        <a class="logo" href="/" aria-label="Alessandro Quadrini, home">AQ</a>
+      <nav class="container nav" aria-label={copy.navigation.main}>
+        <a class="logo" href={languages[locale].path} aria-label={copy.navigation.home}>AQ</a>
         <div class="nav-links">
           {sections.map((section) => <a href={section.href}>{section.label}</a>)}
         </div>
         <details class="section-menu" data-section-menu>
           <summary>
-            Sections
+            {copy.navigation.sections}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="m6 9 6 6 6-6"></path>
             </svg>
@@ -58,11 +68,23 @@ const sections = [
             {sections.map((section) => <a href={section.href}>{section.label}</a>)}
           </div>
         </details>
+        <a
+          class="language-switch"
+          data-language-switch
+          href={alternate.path}
+          lang={alternateLocale}
+          hreflang={alternateLocale}
+          aria-label={alternate.switchLabel}
+          title={alternate.switchLabel}
+        >
+          <span class="language-name">{alternate.name}</span>
+          <span class="language-code" aria-hidden="true">{alternate.code}</span>
+        </a>
         <button
           type="button"
           class="theme-toggle"
           data-theme-toggle
-          aria-label="Toggle color theme"
+          aria-label={copy.navigation.theme}
           aria-pressed="false"
         >
           <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -73,7 +95,7 @@ const sections = [
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
-        <ContactLinks compact />
+        <ContactLinks compact locale={locale} />
       </nav>
     </header>
     <main id="main" tabindex="-1">
@@ -81,7 +103,7 @@ const sections = [
     </main>
     <footer class="site-footer">
       <div class="container">
-        <p>&copy; {new Date().getFullYear()} Alessandro Quadrini &middot; Built with <a href="https://astro.build" rel="noopener">Astro</a></p>
+        <p>&copy; {new Date().getFullYear()} Alessandro Quadrini &middot; {copy.footer.builtWith} <a href="https://astro.build" rel="noopener">Astro</a></p>
       </div>
     </footer>
   </body>
@@ -169,17 +191,20 @@ const sections = [
   .section-menu-links { position: absolute; inset-inline: 0; top: calc(100% + 0.5rem); display: grid; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); }
   .section-menu-links a { display: flex; align-items: center; min-height: 44px; padding: 0.5rem 0.75rem; color: var(--text); }
   .section-menu-links a:hover { background: var(--accent-soft); }
+  .language-switch { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; min-width: 44px; min-height: 44px; padding: 0.45rem 0.65rem; border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 1rem; font-weight: 600; }
+  .language-switch:hover { background: var(--accent-soft); border-color: var(--accent); text-decoration: none; }
+  .language-code { display: none; }
   .theme-toggle { display: grid; place-items: center; width: 48px; height: 46px; flex-shrink: 0; border: 1px solid var(--border); border-radius: 6px; background: transparent; color: var(--text); cursor: pointer; }
   .theme-toggle:hover { background: var(--accent-soft); border-color: var(--accent); }
   .theme-toggle svg { width: 24px; height: 24px; grid-area: 1 / 1; }
   .icon-moon, [data-theme='dark'] .icon-sun { display: none; }
   [data-theme='dark'] .icon-moon { display: block; }
-  .contact-links { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); flex-wrap: wrap; }
-  .contact-links a { display: inline-flex; align-items: center; justify-content: center; gap: 0.65rem; min-height: 44px; white-space: nowrap; color: var(--text); font-size: clamp(1rem, 1.25vw, 1.25rem); }
+  .contact-links { display: flex; align-items: center; gap: clamp(0.5rem, 1.2vw, 1rem); flex-wrap: wrap; }
+  .contact-links a { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 44px; white-space: nowrap; color: var(--text); font-size: clamp(1rem, 1.25vw, 1.25rem); }
   .contact-links svg { flex-shrink: 0; width: 1.2em; height: 1.2em; }
-  .contact-links .email-link { min-height: 4vw; padding: 0.6rem 2.4vw; border-radius: 8px; color: var(--on-accent); background: var(--accent); font-weight: 700; }
+  .contact-links .email-link { width: fit-content; min-height: 44px; padding: 0.5rem 0.75rem; border-radius: 8px; color: var(--on-accent); background: var(--accent); font-weight: 700; }
   .contact-links .email-link:hover { background: color-mix(in srgb, var(--accent) 88%, var(--text)); text-decoration: none; }
-  .contact-links a:nth-child(2) { border-left: 1px solid var(--border); padding-left: clamp(1rem, 2vw, 2rem); }
+  .contact-links a:nth-child(2) { border-left: 1px solid var(--border); padding-left: clamp(0.5rem, 1.2vw, 1rem); }
   .contact-links-compact { flex-shrink: 0; flex-wrap: nowrap; gap: 1.5vw; padding-left: 2.2vw; border-left: 1px solid var(--border); }
   .contact-links-compact a { font-size: 1.125vw; font-weight: 600; gap: 0.5rem; }
   .contact-links-compact .email-link { min-height: 44px; padding: 0; background: transparent; color: var(--text); font-weight: 600; }
@@ -197,4 +222,12 @@ const sections = [
   @media (max-width: 62rem) { .nav-links { display: none; } .section-menu { display: block; } .nav { min-height: 72px; } }
   @media (max-width: 40rem) { .container { width: calc(100% - 2.5rem); } .nav { gap: 0.75rem; } .logo { width: 4rem; } .contact-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem 0.75rem; } .contact-links a { font-size: 1rem; gap: 0.45rem; } .contact-links .email-link { grid-column: 1 / -1; } .contact-links .email-link { min-height: 48px; padding: 0.65rem 1rem; } .contact-links a:nth-child(2) { border: 0; padding-left: 0; } .site-footer .container { flex-direction: column; gap: 0.25rem; } }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  @media (max-width: 40rem) {
+    .nav { gap: 0.5rem; }
+    .logo { width: 3rem; }
+    .language-switch { padding-inline: 0; }
+    .language-name { display: none; }
+    .language-code { display: inline; }
+    .theme-toggle { width: 44px; height: 44px; }
+  }
 </style>
