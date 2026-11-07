@@ -7,3 +7,8 @@ node_modules/*
 .astro
 
 dist/*
+
+#Impeccable Skill files
+.impeccable
+PRODUCT.md
+DESIGN.md
